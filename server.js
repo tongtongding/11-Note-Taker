@@ -71,7 +71,7 @@ app.delete("/api/notes/:id",(req,res)=>{
 
     fs.writeFileSync(path.join(__dirname + "/db/db.json"),JSON.stringify(newNote, null,2));
 
-    res.end(newNote);
+    res.send(newNote);
 
 })
 
