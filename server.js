@@ -37,7 +37,7 @@ app.get("/api/notes/:id",(req,res)=>{
             return res.json(noteDataJSON[i]);
         }
     }
-})
+});
 
 app.post("/api/notes",(req,res)=>{
     
@@ -73,14 +73,14 @@ app.delete("/api/notes/:id",(req,res)=>{
 
     res.send(newNote);
 
-})
+});
 
 
 app.get("*",(req,res)=>{
-    res.sendFile(__dirname + "/public/index.html"
+    res.sendFile(path.join(__dirname + "/public/index.html")
     )
-})
+});
 
 app.listen(PORT,()=>{
     console.log(`Server listening on http://localhost:${PORT}`);
-})
+});
