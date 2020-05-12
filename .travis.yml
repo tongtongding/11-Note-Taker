@@ -1,0 +1,20 @@
+language: node_js
+node_js: '12'
+branches:
+  only:
+  - master
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm update
+install:
+- npm install
+script:
+- npm test
+- npm run coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: sMeDEiBV/9QM5SeBQoCAliE/TaPnVWDBBKi8BhAOTPVfWCnyd+L+HU0Z8CbeudIxK7bLpOhTij9tKEGM9yoWqnyBkWYC010LTGH8IH7bB3uQcJ831OHuhy31HME+J/Jgk960TTNeXa9KgiU0KQhLmGGj65T95xLiedScBTm/Lk3IhDA+8MJ2vs7AlvEVOud3od3KMnk2VbSTxBL11yG+Xp3okthZ8JeVEoKY+rTVYeiBQ4Dm7mTEVp110UKR7FRSnNwVa+pEQ8Y+/gMKRjyOk99m2MjpUDUUzk8bC6Pfr+V2zEplyFZ8kOLNk72/qzhtFqpeacX0wz2IWH+GUnUtkiKAt/piYhrKpSAMDX3yRJ/Oqs0Oep/ZwlGISaeAiM3dRDG+ovqslipjdjeMlPtBBcnrgugXbqXq6i/NRV7l4gcPLZ0SyXY3y4OTK0WU/n/MD9fjxuRFTRKWMda/MTVjzmYyuRRSFFI60jo2ZcTzOrye2OT7hN48UY2JV7wnHFcpRun5eZRQwpEOFOhg+fcxlElco4fMYGDO5QVXpDfXamt1rABJv5g5B93W24ktlih254qDSLN/nhsVV5gMpjwzQntsf6stL7U3LjrxJcOuZ3KBHYHLf/asvcRHJfRoRrRLHZbrkeaPTLWoCZpRZ1qdDpMuRuMVaQ3EZZCpmdBVfuw=
+  app: note-taker-express-11
