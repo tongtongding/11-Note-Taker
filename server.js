@@ -3,12 +3,14 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080;
+const { v4: uuidv4 } = require('uuid');
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+//check with TA
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname + "/public/index.html")
     )
@@ -25,6 +27,7 @@ app.get("/api/notes",(req,res)=>{
     res.json(JSON.parse(noteData));
 });
 
+//check with TA if it needed
 app.get("/api/notes/:id",(req,res)=>{
     let noteID = req.params.id;
     let noteData = fs.readFileSync(path.join(__dirname +"/db/db.json"),"utf-8");
@@ -41,7 +44,8 @@ app.get("/api/notes/:id",(req,res)=>{
 
 app.post("/api/notes",(req,res)=>{
     
-    let newID = new Date().getTime();
+    // let newID = new Date().getTime();
+    let newID = uuidv4();
     let newNote ={
         id:newID,
         title:req.body.title,
