@@ -27,7 +27,6 @@ app.get("/api/notes",(req,res)=>{
     res.json(JSON.parse(noteData));
 });
 
-//check with TA if it needed
 app.get("/api/notes/:id",(req,res)=>{
     let noteID = req.params.id;
     let noteData = fs.readFileSync(path.join(__dirname +"/db/db.json"),"utf-8");
